@@ -1,7 +1,7 @@
 import std/os
 import std/unittest
 
-import nimarrow
+import narrow
 
 type
   CustomType* = object

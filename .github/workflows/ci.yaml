@@ -1,4 +1,4 @@
-name: nimarrow CI
+name: narrow CI
 on: [push, pull_request]
 
 jobs:
@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        path: nimarrow
+        path: narrow
 
     - name: Install build dependencies
       run: |
@@ -22,9 +22,9 @@ jobs:
         tar xf nim-1.4.8-linux_x64.tar.xz         
         echo '${{ github.workspace }}/nim-1.4.8/bin' >> $GITHUB_PATH
     
-    - name: Run nimarrow tests
+    - name: Run narrow tests
       shell: bash
-      working-directory: nimarrow
+      working-directory: narrow
       run: |
         nimble install -y --depsOnly
         nimble test

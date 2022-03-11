@@ -1,6 +1,6 @@
 import std/unittest
 
-import nimarrow
+import narrow
 
 type
   MyType* = object

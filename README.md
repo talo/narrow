@@ -1,16 +1,16 @@
-[![nimarrow CI](https://github.com/emef/nimarrow/actions/workflows/ci.yaml/badge.svg)](https://github.com/emef/nimarrow/actions/workflows/ci.yaml) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![Stability](https://img.shields.io/badge/stability-experimental-orange.svg)
+[![narrow CI](https://github.com/emef/narrow/actions/workflows/ci.yaml/badge.svg)](https://github.com/emef/narrow/actions/workflows/ci.yaml) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![Stability](https://img.shields.io/badge/stability-experimental-orange.svg)
 
-# nimarrow - libarrow bindings for nim
+# narrow - libarrow bindings for nim
 
-[API Documentation](https://emef.github.io/nimarrow/theindex.html)
+[API Documentation](https://emef.github.io/narrow/theindex.html)
 
 "[Apache Arrow](https://arrow.apache.org/) defines a language-independent columnar memory format for flat and hierarchical data, organized for efficient analytic operations on modern hardware like CPUs and GPUs. The Arrow memory format also supports zero-copy reads for lightning-fast data access without serialization overhead."
 
-`nimarrow` provides an ergonomic nim interface to the lower level libarrow c api.
+`narrow` provides an ergonomic nim interface to the lower level libarrow c api.
 
 # Dependencies
 
-`nimarrow` depends on the package `nimarrow_glib` which provides bindings to the  libarrow-glib and libparquet-glib shared libraries. See the [installation notes](https://github.com/emef/nimarrow_glib/#installation-notes) for instructions on how to install those libraries.
+`narrow` depends on the package `nimarrow_glib` which provides bindings to the  libarrow-glib and libparquet-glib shared libraries. See the [installation notes](https://github.com/emef/nimarrow_glib/#installation-notes) for instructions on how to install those libraries.
 
 # Project Status
 
@@ -32,7 +32,7 @@ An ArrowArray[T] is simply a 1D array of type T. It manages its own data on the 
 
 ```nim
 import options
-import nimarrow
+import narrow
 
 let arr = newArrowArray[int32](@[1'i32, 2'i32, 3'i32])
 doAssert arr[0] == 1'i32
@@ -62,7 +62,7 @@ An ArrowTable is an ordered collection of named arrays (columns). Each column na
 To construct a table, we use an ArrowTableBuilder which is constructed with the intended schema. Each column's data must then be added to the builder in the order specified by the schema. Creating a table does not copy any of the column data, it will share the internal buffers of the arrays used to construct it.
 
 ```nim
-import nimarrow
+import narrow
 
 # Schema will be (a: int32, b: string)
 let field1 = newArrowField("a", int32)
@@ -87,7 +87,7 @@ discard $table
 ## Basic parquet I/O
 
 ```nim
-import nimarrow
+import narrow
 
 # write to a parquet file with default properties
 let table: ArrowTable = ...

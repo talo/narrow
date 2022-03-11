@@ -1,7 +1,7 @@
 import std/options
 import std/unittest
 
-import nimarrow
+import narrow
 
 test "can construct simple arrays":
   let arr = newArrowArray[int32](@[1'i32, 2'i32, 3'i32])
