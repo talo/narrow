@@ -27,8 +27,8 @@
             src = fetchFromGitHub {
               owner = "talo";
               repo = pname;
-              rev = version;
-              hash = "sha256-w64ENRyP3mNTtESSt7CDDxUkjYSfziNVVedkO4HIuJ8=";
+              rev = "7206e306ed32cbd0765b06ac044a70a34a48114b";
+              hash = "sha256-pJ7OwUwChklkTwvwzeymqWJE1EehYJINE7/mWsDWdhw=";
             };
             inherit nativeBuildInputs propagatedBuildInputs;
           };
