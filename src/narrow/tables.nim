@@ -101,6 +101,14 @@ proc `$`*(table: ArrowTable): string =
     defer: gErrorFree(error)
     raise newException(ValueError, $error.message)
 
+proc `$`*(schema: ArrowSchema): string =
+  ## String representation of the table's schema and full contents.
+  var error: GErrorPtr
+  result = $schemaToString(schema.glibSchema, error)
+  if error != nil:
+    defer: gErrorFree(error)
+    raise newException(ValueError, $error.message)
+
 proc `==`*(table, other: ArrowTable): bool =
   tableEqual(table.glibPtr, other.glibPtr)
 
