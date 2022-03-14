@@ -10,17 +10,17 @@
   let
     pkgs = import nixpkgs { inherit system; };
     goatpkgs = import goatnixpkgs { inherit system; };
-    buildInputs = [
-      pkgs.glib.out
+    nativeBuildInputs = [
       goatpkgs.arrow-c-glib
     ];
-    nativeBuildInputs = [
+    propagatedBuildInputs = [
+      pkgs.glib.out
       goatpkgs.arrow-c-glib
     ];
   in {
     devShell = with pkgs;
     mkShell {
-      buildInputs = buildInputs ++ [
+      buildInputs = propagatedBuildInputs ++ [
         goatpkgs.nim
         goatpkgs.nrpl
         goatpkgs.nimlsp
@@ -36,7 +36,7 @@
         rev = version;
         hash = "sha256-w64ENRyP3mNTtESSt7CDDxUkjYSfziNVVedkO4HIuJ8=";
       };
-      inherit buildInputs nativeBuildInputs;
+      inherit nativeBuildInputs propagatedBuildInputs;
     };
   });
 }
